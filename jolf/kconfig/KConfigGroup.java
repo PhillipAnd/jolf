@@ -1,5 +1,6 @@
 package jolf.kconfig;
 import java.util.Hashtable;
+import java.util.Scanner;
 
 public class KConfigGroup extends Hashtable<String,String> {
 
@@ -13,6 +14,13 @@ public class KConfigGroup extends Hashtable<String,String> {
 	
 	public static KConfigGroup parse(String raw) {
 		KConfigGroup result = new KConfigGroup();
+		Scanner in = new Scanner(raw);
+		while (in.hasNextLine()) {
+			String[] components = in.nextLine().split("=",2);
+			if (components.length == 2) {
+				result.put(components[0].toLowerCase(),components[1]);
+			}
+		}
 		
 		return result;
 	}
