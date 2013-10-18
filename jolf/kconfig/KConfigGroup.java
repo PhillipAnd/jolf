@@ -12,7 +12,7 @@ public class KConfigGroup extends Hashtable<String,String> {
 			return def;
 	}
 	
-	public static KConfigGroup parse(String raw) {
+	static KConfigGroup parse(String raw) {
 		KConfigGroup result = new KConfigGroup();
 		Scanner in = new Scanner(raw);
 		while (in.hasNextLine()) {
