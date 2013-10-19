@@ -9,18 +9,14 @@ public class JolfTest {
 			System.exit(-1);
 		}
 		
-		KConfig config = new KConfig(args[0]);
-		KConfigGroup courseGroup = config.group("0-course@-50,-50");
-		System.out.println(config.size());
-		if (courseGroup == null) {
-			System.out.println("Error: course group not found");
-			System.exit(0);
-		}
-		String courseName = courseGroup.readEntry("name","not set");
-		System.out.print("Course name is ");
-		System.out.println(courseName);
+		CourseInfo info = new CourseInfo();
+		info.name = "Untitled";
+		info.author = "Unknown";
+		JolfGame.courseInfo(info,args[0]);
 		
-		System.out.println("Success!!");
+		System.out.println(info.name);
+		System.out.println("by " + info.author);
+		System.out.println(info.holes + " holes, par " + info.par);
 		
 	}
 	
